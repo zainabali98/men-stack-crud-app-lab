@@ -8,15 +8,17 @@
 </head>
 
 <body>
+        <%- include('navbar.ejs') %>
+<br>
     <h1>Add New Book</h1>
 
 
-    <form action="/books" method="post">
+    <form action="/allbooks" method="post">
 
 
         <div>
-            <label for="Title">Book Title</label>
-            <input type="text" name="Title" id="Title" required>
+            <label for="title">Book Title</label>
+            <input type="text" name="title" id="title" required>
         </div>
         <br>
         <div>
@@ -55,7 +57,7 @@
         <br>
         <div>
             <label for="inStock">Is the book in stock?</label>
-            <input type="checkbox" name="inStock" id="inStock">
+            <input type="checkbox" name="inStock" id="inStock" value="true">
         </div>
 
 

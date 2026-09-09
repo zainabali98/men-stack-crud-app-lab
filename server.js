@@ -46,23 +46,24 @@ conntectToDB()
 
 // Routes go here
 
-
-
-app.get('/test', (req, res)=> {
-    res.render("test.ejs")
-})
-
 app.get('/new', (req, res)=> {
     res.render("new.ejs")
-})
+});
 
 
- app.get('/books', (req, res)=>{
-    res.render
- })
+app.get('/Books-mainpage', (req, res)=>{
+    res.render('Books-mainpage.ejs')// change to a new file!!
+ });
  
- 
- 
+app.get('/allbooks', (req, res)=> {
+    res.render("all-books.ejs")
+});
+
+
+app.post('/allbooks', async (req, res)=>{
+    const newBook = await Book.create(req.body)
+    res.redirect('/Books-mainpage')
+});
 
 
 
