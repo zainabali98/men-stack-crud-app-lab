@@ -21,7 +21,8 @@
         <br>
         <div>
             <label for="Author">Author Name</label>
-            <input type="text" name="Author" id="Author">
+            <input type="text" name="Author" id="Author" placeholder="First Author">
+            <input type="text" name="Author2" id="Author2" placeholder="Second Author">
         </div>
         <br>
         <div>
@@ -33,19 +34,29 @@
             <label for="pages">Pages Count</label>
             <input type="number" name="pages" id="pages">
         </div>
-
+        <br>
         <div>
-            <label for="genre">Genre</label>
+            <label for="genre">Genre:</label>
 
-            <select name="genre" id="genre">
-                <option value="fiction">Fiction</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="history">History</option>
-                <option value="science">Science</option>
-            </select>
+            <label>Fiction</label>
+            <input type="checkbox" name="genre" value="fiction">
+
+            <label>Fantasy</label>
+            <input type="checkbox" name="genre" value="fantasy">
+
+            <label>History</label>
+            <input type="checkbox" name="genre" value="history">
+
+            <label>Science</label>
+            <input type="checkbox" name="genre" value="science">
+
         </div>
 
-
+        <br>
+        <div>
+            <label for="inStock">Is the book in stock?</label>
+            <input type="checkbox" name="inStock" id="inStock">
+        </div>
 
 
         <br>
