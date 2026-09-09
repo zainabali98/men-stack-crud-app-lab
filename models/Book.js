@@ -11,7 +11,7 @@ const bookSchema = new mongoose.Schema({
     },
     publishDate:{
         type:String,
-        required:true,
+        required:false,
     },
     pages:{
         type:Number,
@@ -25,6 +25,12 @@ const bookSchema = new mongoose.Schema({
     inStock:{
         type:Boolean,
         required:false,
+    },
+    rating:{
+        type:Number,
+        required:false,
+        min:0,
+        max:10,
     },
 }, {timestamps:true});
 

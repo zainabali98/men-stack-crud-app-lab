@@ -46,7 +46,7 @@ conntectToDB()
 
 // Routes go here
 
-app.get('/new', (req, res)=> {
+app.get('/books/new', (req, res)=> {
     res.render("new.ejs")
 });
 
@@ -55,15 +55,54 @@ app.get('/Books-mainpage', (req, res)=>{
     res.render('Books-mainpage.ejs')// change to a new file!!
  });
  
-app.get('/allbooks', (req, res)=> {
-    res.render("all-books.ejs")
-});
 
 
 app.post('/allbooks', async (req, res)=>{
-    const newBook = await Book.create(req.body)
+    const newBook = await Book.create({
+        title: 'Dune',
+        author:['Frank'],
+        publishDate :'10-10-1965',
+        genre:['fiction', 'science'],
+        inStock: true,
+        rating: 4.8,
+    })
     res.redirect('/Books-mainpage')
 });
+
+
+app.get('/allbooks', async (req, res)=>{
+    const allBooks = await Book.find()
+    res.render('all-books.ejs', {allBooks: allBooks})
+});
+
+
+app.get('/books/:id', async (req, res)=> {
+    const findBookById = await Book.findById(req.params.id)
+    res.render('show-book.ejs', { book: findBookById })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
