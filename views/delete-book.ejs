@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+        <%- include('navbar.ejs') %>
+
+
+    <h1>Edit your books here!</h1>
+
+
+
+    <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
+
+        <div>
+            <label for="title">Book Title</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <br>
+        <div>
+            <label for="Author">Author Name</label>
+            <input type="text" name="Author" id="Author" placeholder="First Author">
+            <input type="text" name="Author2" id="Author2" placeholder="Second Author">
+        </div>
+        <br>
+        <div>
+            <label for="publishDate">Publish Date</label>
+            <input type="date" name="publishDate" id="publishDate">
+        </div>
+        <br>
+        <div>
+            <label for="pages">Pages Count</label>
+            <input type="number" name="pages" id="pages">
+        </div>
+        <br>
+        <div>
+            <label for="genre">Genre:</label>
+
+            <label>Fiction</label>
+            <input type="checkbox" name="genre" value="fiction">
+
+            <label>Fantasy</label>
+            <input type="checkbox" name="genre" value="fantasy">
+
+            <label>History</label>
+            <input type="checkbox" name="genre" value="history">
+
+            <label>Science</label>
+            <input type="checkbox" name="genre" value="science">
+
+        </div>
+
+        <br>
+        <div>
+            <label for="inStock">Is the book in stock?</label>
+            <input type="checkbox" name="inStock" id="inStock" value="true">
+        </div>
+        <br>
+        <div>
+            <label for=" rating">⭐Rating:</label>
+            <input type="number" name="rating" id="rating" min="0" max="10">
+        </div>
+
+
+        <br>
+        <br>
+        <button>Submit</button>
+    </form>
+
+
+</body>
+
+</html>

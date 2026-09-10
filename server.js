@@ -62,14 +62,7 @@ app.get('/books/new', (req, res)=> {
 
 
 app.post('/allbooks', async (req, res)=>{
-    const newBook = await Book.create({
-        title: 'Dune',
-        author:['Frank'],
-        publishDate :'10-10-1965',
-        genre:['fiction', 'science'],
-        inStock: true,
-        rating: 4.8,
-    })
+    const newBook = await Book.create(req.body)
     res.redirect('/Books-mainpage')
 });
 
@@ -97,8 +90,16 @@ app.put('/books/:id', async (req, res)=>{
     res.redirect('/allbooks')
 })
 
-app.delete('/books/:id', async (req, res)=>{
-    const deletedBooks = await Book.findByIdAndDelete(req.params.id)
+
+app.delete('/books/:id', async (req, res) => {
+
+    console.log("DELETE ROUTE HIT")
+    console.log(req.params.id)
+
+    const deletedBook = await Book.findByIdAndDelete(req.params.id)
+
+    console.log(deletedBook)
+
     res.redirect('/allbooks')
 })
 
