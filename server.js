@@ -45,16 +45,20 @@ conntectToDB()
 
 
 // Routes go here
+app.get('/Books-mainpage', (req, res)=>{
+    res.render('Books-mainpage.ejs')// change to a new file!!
+ });
+
+
+app.get('/allbooks', async (req, res)=>{
+    const allBooks = await Book.find()
+    res.render('all-books.ejs', {allBooks: allBooks})
+});
+
 
 app.get('/books/new', (req, res)=> {
     res.render("new.ejs")
 });
-
-
-app.get('/Books-mainpage', (req, res)=>{
-    res.render('Books-mainpage.ejs')// change to a new file!!
- });
- 
 
 
 app.post('/allbooks', async (req, res)=>{
@@ -70,10 +74,7 @@ app.post('/allbooks', async (req, res)=>{
 });
 
 
-app.get('/allbooks', async (req, res)=>{
-    const allBooks = await Book.find()
-    res.render('all-books.ejs', {allBooks: allBooks})
-});
+
 
 
 app.get('/books/:id', async (req, res)=> {
@@ -82,6 +83,24 @@ app.get('/books/:id', async (req, res)=> {
 })
 
 
+//GET	/plants/:id/edit	Edit	Shows a form to edit an existing plant
+app.get('/books/:id/edit', async (req, res)=> {
+    const findBookByIdAndEdit = await Book.findById(req.params.id)
+        console.log(findBookByIdAndEdit)
+
+    res.render('edit-books.ejs', { book: findBookByIdAndEdit})
+})
+
+
+app.put('/books/:id', async (req, res)=>{
+    const updatedBooks = await Book.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/allbooks')
+})
+
+app.delete('/books/:id', async (req, res)=>{
+    const deletedBooks = await Book.findByIdAndDelete(req.params.id)
+    res.redirect('/allbooks')
+})
 
 
 
